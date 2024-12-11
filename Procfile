@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn metal_health.app:app
