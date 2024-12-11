@@ -1,13 +1,18 @@
+import sys
+import os
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash
 import joblib
 import pandas as pd
 import json
-import sys
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
-sys.path.insert(0, r"C:\Users\DELL\Desktop\Complete ai\Final_Projectv1\Project\Chatbot_Final")  # Ensure this line is correctly placed
-from app1new import chatbot_response 
+# Add the path to the Chatbot_Final folder dynamically
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'Chatbot_Final')))
+
+# Import chatbot_response after modifying the Python path
+from app1new import chatbot_response  # Ensure this line is correctly placed
+ 
 
 app = Flask(__name__)
 app.secret_key = "1234"  # Set a secret key for session management
