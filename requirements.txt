@@ -7,3 +7,4 @@ nltk
 numpy
 pandas
 joblib
+gnuicorn
