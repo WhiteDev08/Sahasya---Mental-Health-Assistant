@@ -8,3 +8,4 @@ numpy
 pandas
 joblib
 gunicorn
+scikit-learn
