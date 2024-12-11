@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questionnaire</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../static/css/index_style.css" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Scripts -->
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f8f1f0;
+        color: #333;
+      }
+
+      .intro_container {
+        z-index: -1;
+        width: 58%;
+        text-align: center;
+        padding: 40px;
+        background-color: #fff;
+        border: 2px solid #e69582;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo img {
+        width: 80px;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #c84627;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .instructions {
+        text-align: left;
+        margin: 20px 0;
+      }
+
+      .instructions h3 {
+        font-size: 1.5rem;
+        color: #741d2c;
+        margin-bottom: 10px;
+      }
+
+      .instructions ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .instructions li {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        color: #555;
+      }
+
+      .start-button {
+        background-color: #d56247;
+        color: #fff;
+        margin: 1rem;
+        border: none;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow for a deeper effect */
+        border-radius: 5px;
+        padding: 12px 20px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .start-button:hover {
+        background-color: #c04123;
+      }
+
+      /* Image Styles */
+      .bot-image {
+        z-index: -1;
+        position: absolute;
+        width: 20%;
+        top: 40%;
+        transform: translateY(-50%);
+        right: 10rem; /* Adjust position of the image */
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light header">
+      <div class="container">
+        <a class="navbar_brand" href="{{ url_for('about') }}">
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='images/logo.jpg') }}"
+            alt="logo"
+          />
+          Sahasya
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="lists collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}">CHATBOT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('start') }}"
+                >ANALYSIS</a
+              >
+            </li>
+            <!-- Profile Section in Navbar -->
+            <li class="nav-item">
+              <a class="nav-link profile_details" href="#" id="profileLink"
+                >PROFILE</a
+              >
+              <div id="profileDropdown" class="dropdown-content">
+                <div class="profile-picture">
+                  <img
+                    id="profile_details_pic"
+                    src="{{ url_for('static', filename='images/profile.webp') }}"
+                    alt="user profile"
+                  />
+                </div>
+                <div class="profile-detail">
+                  <strong>Name:</strong> {{ session.get('name', 'John Doe') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Age:</strong> {{ session.get('age', '30') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Gender:</strong> {{ session.get('gender', 'Male') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Email:</strong> {{ session.get('user',
+                  'john.doe@example.com') }}
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link logout-icon"
+                href="{{ url_for('login') }}"
+                id="logoutLink"
+                title="Logout"
+              >
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Animated Background Section -->
+    <div class="area">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <div class="intro_container">
+      <h1>Welcome to the Mental Health Self-Assessment</h1>
+      <p>
+        This self-assessment is designed to help you gain insights into your
+        mental well-being. Answer each question honestly to get the most
+        accurate results. Your responses are confidential and will be used
+        solely for your personal reflection.
+      </p>
+
+      <div class="instructions">
+        <h3>Instructions</h3>
+        <ul>
+          <li>
+            This assessment includes <strong>12 questions</strong> and will take
+            approximately <strong>5-10 minutes</strong> to complete.
+          </li>
+          <li>
+            Consider how each statement has applied to you over the past 6
+            months.
+          </li>
+          <li>
+            There are no right or wrong answers—just respond as truthfully as
+            possible.
+          </li>
+        </ul>
+      </div>
+      <img
+        class="bot-image"
+        src="../static/images/bot_peeping.png"
+        alt="Bot Peeping"
+      />
+
+      <button class="start-button" onclick="startAssessment()">
+        Start Assessment
+      </button>
+    </div>
+
+    <script>
+      function startAssessment() {
+        // Redirect to the category selection page
+        window.location.href = "{{ url_for('category') }}";
+      }
+      // Profile Functionality
+
+      const profileLink = document.getElementById("profileLink");
+      const profileDropdown = document.getElementById("profileDropdown");
+
+      profileLink.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+        profileDropdown.classList.toggle("show"); // Toggle the visibility class
+      });
+
+      // Hide dropdown when clicking anywhere else on the screen
+      document.addEventListener("click", function (event) {
+        if (
+          !profileLink.contains(event.target) &&
+          !profileDropdown.contains(event.target)
+        ) {
+          profileDropdown.classList.remove("show"); // Remove visibility class
+        }
+      });
+    </script>
+  </body>
+</html>

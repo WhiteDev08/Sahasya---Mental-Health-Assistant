@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Result</title>
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: #ffd1ba; /* Peachy background color */
+        }
+        
+        /* Background Animation */
+        section {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .leaf {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .leaf div {
+            position: absolute;
+            display: block;
+            width: 10px;
+            height: 10px;
+            animation: fall 15s linear infinite;
+        }
+
+        .leaf div:nth-child(1) { left: 20%; animation-delay: -2s; }
+        .leaf div:nth-child(2) { left: 70%; animation-delay: -4s; }
+        .leaf div:nth-child(3) { left: 10%; animation-delay: -7s; }
+        .leaf div:nth-child(4) { left: 50%; animation-delay: -5s; }
+        .leaf div:nth-child(5) { left: 85%; animation-delay: -5s; }
+        .leaf div:nth-child(6) { left: 15%; animation-delay: -10s; }
+        .leaf div:nth-child(7) { left: 90%; animation-delay: -4s; }
+        
+        @keyframes fall {
+            0% { top: -10%; opacity: 1; transform: rotate(0deg); }
+            100% { top: 110%; opacity: 0; transform: rotate(225deg); }
+        }
+        
+        /* Content Styling */
+        .container {
+            align-content: center;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 100px 375px;
+            position: relative;
+            z-index: 1;
+            background: #facedf;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0,0.2);
+            border-radius: 50px;
+            border: 2px solid #e69582;
+        }
+
+        h1 { color: #333; font-size: 2rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.8rem; color: #444; }
+        p { font-size: 1.2rem; color: #555; line-height: 1.6; }
+        
+        .button {
+            padding: 0.8rem 2rem;
+            background-color: #cc005f;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover { background-color: #ff5e62; }
+        
+        .tips-content {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .tips-section { margin-bottom: 1rem; }
+        .icon { font-size: 1.5rem; margin-right: 8px; }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="leaf">
+            <div><img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" alt="Leaf"></div>
+            <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png" alt="Leaf"></div>
+            <div><img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png" alt="Leaf"></div>
+            <div><img src="http://www.pngmart.com/files/1/Green-Leaves-PNG-File.png" alt="Leaf"></div>
+            <div><img src="http://www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png" alt="Leaf"></div>
+            <div><img src="http://www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png" alt="Leaf"></div>
+            <!-- <div><img src="http://cdn.clipart-db.ru/rastr/autumn_leaves_025.png" alt="Leaf"></div> -->
+        </div>
+
+        <div class="container" id="resultPage">
+            <h1>Assessment Result</h1>
+            <!-- No Depression -->
+            {% if prediction == "No Depression" %}
+            <h2>✨ No signs of depression detected!</h2>
+            <div class="tips-content">
+                <p class="tips-section"><span class="icon">🌞</span> Start each day with gratitude to set a positive tone.</p>
+                <p class="tips-section"><span class="icon">🏃‍♂️</span> Try a daily walk or quick exercise to boost energy.</p>
+                <p class="tips-section"><span class="icon">🤗</span> Connect with friends and family to lift your spirits.</p>
+                <p class="tips-section"><span class="icon">📝</span> Reflect on your day in a journal to stay mindful.</p>
+            </div>
+
+            <!-- Minimal Depression -->
+            {% elif prediction == "Minimal Depression" %}
+            <h2>🌅 Minimal signs of depression detected.</h2>
+            <div class="tips-content">
+                <p class="tips-section"><span class="icon">💆‍♂️</span> Practice deep breathing for a few minutes daily.</p>
+                <p class="tips-section"><span class="icon">📅</span> Add enjoyable activities to your routine.</p>
+                <p class="tips-section"><span class="icon">📓</span> Keep a journal to express and process feelings.</p>
+                <p class="tips-section"><span class="icon">🚶‍♀️</span> Spend time outdoors for a mood boost.</p>
+            </div>
+
+            <!-- Moderate Depression -->
+            {% elif prediction == "Moderate Depression" %}
+            <h2>🌤 Moderate level of depression detected.</h2>
+            <div class="tips-content">
+                <p class="tips-section"><span class="icon">✅</span> Set small goals for a sense of accomplishment.</p>
+                <p class="tips-section"><span class="icon">👥</span> Lean on friends or family for support.</p>
+                <p class="tips-section"><span class="icon">💬</span> Practice self-compassion with gentle reminders.</p>
+                <p class="tips-section"><span class="icon">🧘</span> Try relaxing activities like yoga or meditation.</p>
+            </div>
+
+            <!-- Severe Depression -->
+            {% elif prediction == "Severe Depression" %}
+            <h2>😞 Severe level of depression detected.</h2>
+            <div class="tips-content">
+                <p class="tips-section"><span class="icon">🧑‍⚕️</span> Reach out to a mental health professional.</p>
+                <p class="tips-section"><span class="icon">🛀</span> Make time for self-care, focusing on comfort.</p>
+                <p class="tips-section"><span class="icon">🤲</span> Consider joining a support group for connection.</p>
+                <p class="tips-section"><span class="icon">🌸</span> Remember, seeking help is a sign of strength.</p>
+            </div>
+            {% endif %}
+            <a href="{{ url_for('home') }}" class="button">Go to Home</a>
+        </div>
+    </section>
+</body>
+</html>

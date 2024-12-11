@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Tags & Page Title -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Sahasya</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../static/css/index_style.css" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Scripts -->
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+
+    <!-- Inline CSS for Background -->
+    <style>
+      #bg-wrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-light header">
+      <div class="container">
+        <a class="navbar_brand" href="{{ url_for('about') }}">
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='images/logo.jpg') }}"
+            alt="logo"
+          />
+          Sahasya
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="lists collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('home') }}"
+                >CHATBOT</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('start') }}">ANALYSIS</a>
+            </li>
+
+            <!-- Profile Section in Navbar -->
+            <li class="nav-item">
+              <a class="nav-link profile_details" href="#" id="profileLink"
+                >PROFILE</a
+              >
+              <div id="profileDropdown" class="dropdown-content">
+                <div class="profile-picture">
+                  <img
+                    id="profile_details_pic"
+                    src="{{ url_for('static', filename='images/profile.webp') }}"
+                    alt="user profile"
+                  />
+                </div>
+                <div class="profile-detail">
+                  <strong>Name:</strong> {{ session.get('name', 'John Doe') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Age:</strong> {{ session.get('age', '30') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Gender:</strong> {{ session.get('gender', 'Male') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Email:</strong> {{ session.get('user',
+                  'john.doe@example.com') }}
+                </div>
+              </div>
+            </li>
+            <!-- Profile END -->
+            <li class="nav-item">
+              <a
+                class="nav-link logout-icon"
+                href="{{ url_for('login') }}"
+                id="logoutLink"
+                title="Logout"
+              >
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Animated Background Section -->
+    <div class="area">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <!-- Sidebar Section -->
+    <div class="left-sidebar">
+      <!-- Predictive Analysis Card -->
+      <a id="predictive_analysis" href="{{ url_for('start') }}">
+        <div class="card predictive-analysis-card">
+          <h3>Mind Snapshot</h3>
+          <span class="test_icon">📝</span>
+          <p id="predictive_caption">
+            Take the assessment now to gain deeper insights into yourself.
+          </p>
+        </div>
+      </a>
+
+      <!-- SOS Helplines Card -->
+      <div class="card sos-helpline-card">
+        <h3 id="SOS">SOS Helplines</h3>
+        <ul class="helplines" type="none">
+          <li>
+            <i class="fa fa-phone"></i> National Helpline Number for Mental
+            Health
+            <br />
+            <span
+              ><a href="tel:14416">14416</a> or
+              <a href="tel:18005990019">1800-599-0019</a> (24x7)</span
+            >
+          </li>
+          <li>
+            <i class="fa fa-phone"></i> Kiran Mental Health Rehabilitation
+            Helpline
+            <br />
+            <span><a href="tel:18005990019">1800-599-0019</a> (24x7)</span>
+          </li>
+          <li>
+            <i class="fa fa-phone"></i> AASRA
+            <br />
+            <span><a href="tel:919820466726">+91-9820466726</a> (24x7)</span>
+          </li>
+          <li>
+            <i class="fa fa-phone"></i> Vandrevala Foundation Mental Health
+            Helpline
+            <br />
+            <span
+              ><a href="tel:18602662345">1860-266-2345</a> or
+              <a href="tel:18002333330">1800-233-3330</a></span
+            >
+          </li>
+          <li>
+            <i class="fa fa-phone"></i> Fortis Stress Helpline
+            <br />
+            <span
+              ><a href="tel:918376804102">+91-8376804102</a> (9 am to 9
+              pm)</span
+            >
+          </li>
+          <li>
+            <i class="fa fa-phone"></i> Samaritans Mumbai
+            <br />
+            <span>
+              <a href="tel:918422984525">+91-8422984525</a> (3 pm to 9 pm, all
+              days)
+            </span>
+          </li>
+          <li>
+            <i class="fa fa-phone"></i> Lifeline Foundation
+            <br />
+            <span
+              ><a href="tel:919152987821">+91-9152987821</a> (10 am to 10
+              pm)</span
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Chat Container Section -->
+    <div class="chat-container">
+      <!-- Messages -->
+      <div class="messages">
+        <div class="message bot">
+          <div class="avatar bot-avatar">
+            <img id="bot_profile" src="../static/images/bot_profile.jpg" />
+          </div>
+          <div class="message-content">
+            <p>Hi! I’m Sahasya,your mental health companion. Feel free to share your thoughts.</p>
+          </div>
+        </div>
+        <div class="message user">
+          <div class="message-content">
+          </div>
+        </div>
+      </div>
+
+      <!-- Type Bar -->
+      <div class="type-bar" style="display: flex; align-items: center">
+        <input
+          type="text"
+          placeholder="Type your message..."
+          class="message-input"
+          style="
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          "
+        />
+        <i
+          class="fa fa-paper-plane send-icon"
+          style="
+            margin-left: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #811331;
+          "
+        ></i>
+      </div>
+    </div>
+
+    <!-- Right Sidebar for Safe message Card -->
+    <div class="right-sidebar">
+      <div id="safe-space-message">
+        <img
+          id="right_card_bot"
+          src="../static/images/bot.jpg"
+          alt="bot image"
+        />
+        <h2>Safe Space for You</h2>
+        <p>
+          Welcome to a safe and confidential space dedicated to your well-being.
+        </p>
+        <p>
+          Your experiences and feelings are important. Take your time, express
+          yourself openly, and know that you are not alone. We’re here to
+          support you whenever you’re ready.
+        </p>
+      </div>
+    </div>
+
+    <script>// <!-- JavaScript for Profile Functionality -->
+
+      const profileLink = document.getElementById("profileLink");
+      const profileDropdown = document.getElementById("profileDropdown");
+
+      profileLink.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+        profileDropdown.classList.toggle("show"); // Toggle the visibility class
+      });
+
+      // Hide dropdown when clicking anywhere else on the screen
+      document.addEventListener("click", function (event) {
+        if (
+          !profileLink.contains(event.target) &&
+          !profileDropdown.contains(event.target)
+        ) {
+          profileDropdown.classList.remove("show"); // Remove visibility class
+        }
+      });
+      
+      function addBotResponse(botResponse) {
+        const botMessageElement = document.createElement("div");
+        botMessageElement.classList.add("message", "bot");
+        botMessageElement.innerHTML = `
+              <div class="avatar bot-avatar">
+                  <img id="bot_profile" src="../static/images/bot_profile.jpg" alt="Chatbot Avatar" />
+              </div>
+              <div class="message-content">
+                  <p>${botResponse}</p>
+              </div>
+          `;
+        messagesContainer.appendChild(botMessageElement);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to the bottom
+      }
+
+      const messageInput = document.querySelector(".message-input");
+      const messagesContainer = document.querySelector(".messages");
+
+      messageInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter" && messageInput.value.trim() !== "") {
+          const userMessage = messageInput.value;
+
+          const userMessageElement = document.createElement("div");
+          userMessageElement.classList.add("message", "user");
+          userMessageElement.innerHTML = `
+                  <div class="message-content">
+                      <p>${userMessage}</p>
+                  </div>
+                  <div class="avatar user-avatar">
+                      <img id="user_profile" src="../static/images/profile.webp" alt="User Avatar" />
+                  </div>
+              `;
+          messagesContainer.appendChild(userMessageElement);
+          messageInput.value = "";
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+          // Send message to backend to get bot response
+          fetch("/chat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ message: userMessage }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              addBotResponse(data.response); // Display bot's response
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+      });
+    </script>
+  </body>
+</html>

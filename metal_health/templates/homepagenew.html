@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <nav class="nav bd_grid">
+        <div>
+          <a href="#" class="nav_logo">Sahasya</a>
+        </div>
+
+        <div class="nav_menu" id="nav_menu">
+          <ul class="nav_list">
+            <li class="nav_items">
+              <a href="{{ url_for('home') }}" class="nav_link active">Home</a>
+            </li>
+            <li class="nav_items">
+              <a href="#about" class="nav_link active">About</a>
+            </li>
+            <li class="nav_items">
+              <a href="#skills" class="nav_link active">Features</a>
+            </li>
+            <li class="nav_items">
+              <a href="#work" class="nav_link active">Services</a>
+            </li>
+            <li class="nav_items">
+              <a href="#contact" class="nav_link active">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav_toggle" id="nav_toggle">
+          <i class="bx bx-menu-alt-right"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main">
+      <!-- HOME SECTION -->
+      <section class="home bd_grid" id="home">
+        <div class="home_data" data-aos="fade-down">
+          <h1 class="home_title">
+            <span class="home_title-color">Sahasya</span
+            ><br /><span id="caption">Your mental health companion</span>
+          </h1>
+          <a href="#contact" class="button"> Contact</a>
+        </div>
+
+        <div class="home_social">
+          <a href="#" class="home_social-icon" data-aos="fade-down"
+            ><i class="bx bxl-facebook-circle"></i
+          ></a>
+          <a
+            href="#"
+            class="home_social-icon"
+            data-aos="fade-down"
+            data-aos-delay="250"
+            ><i class="bx bxl-instagram"></i
+          ></a>
+          <a
+            href="#"
+            class="home_social-icon"
+            data-aos="fade-down"
+            data-aos-delay="300"
+            ><i class="bx bxl-twitter"></i
+          ></a>
+          <a
+            href="#"
+            class="home_social-icon"
+            data-aos="fade-down"
+            data-aos-delay="350"
+            ><i class="bx bxl-github"></i
+          ></a>
+        </div>
+
+        <div class="home_img" data-aos="fade-down" data-aos-delay="500">
+          <img style="border-radius: 20%; width:220; height:auto; margin-bottom:9rem;"  src="https://blog.esc13.net/wp-content/uploads/2020/12/TopTenTipsforTeachingMentalHealth-768x432.png">
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section class="about section" id="about">
+        <h2 class="section-title" data-aos="fade-down">About</h2>
+
+        <div class="about_container bd_grid">
+          <div class="about_img" data-aos="fade-down" data-aos-delay="50">
+            <img style="margin-left:-4rem; border-radius: 20%;" src="https://www.fsunews.com/gcdn/presto/2020/03/08/PFSU/7450ad42-fcc1-44c5-9dcf-53953454a00f-mental-health-2313426_1280.png?width=660&height=495&fit=crop&format=pjpg&auto=webp">
+          </div>
+
+          <div>
+            <h2
+              class="about_subtitle"
+              data-aos="fade-down"
+              data-aos-delay="350"
+            >
+                Begin Your Path to Wellness with Sahasya
+            </h2>
+            <p class="about_text" data-aos="fade-down" data-aos-delay="450">
+              Your journey to better mental health starts here. At Sahasya, 
+              we understand that life can be overwhelming, and sometimes, you just need someone to listen.
+              This platform is dedicated to supporting you with tools for self-discovery and mental wellness.
+              Explore our quiz to understand your mental state better or chat with our friendly, supportive bot when you need someone to talk to.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section class="skills section" id="skills">
+        <h2 class="section-title" data-aos="fade-down">Features</h2>
+
+        <div class="skills_container bd_grid">
+          <div>
+            <h2
+              class="skills_subtitle"
+              data-aos="fade-down"
+              data-aos-delay="250"
+            >
+              Our Mission and Features
+            </h2>
+            <p class="skills_text" data-aos="fade-down" data-aos-delay="350">
+            Empowering Your Mental Wellness: Sahasya's Mission and Tools for Self-Discovery, Support, and Understanding Your Mental Health Journey.
+            </p>
+
+<!-- Non-Judgmental Support -->
+
+<div class="skills_data" data-aos="fade-right">
+  <div class="skills_name">
+    <span class="skill_name">Non-Judgmental Support</span>
+    <span style="font-size: 0.8rem; font-weight: 300; margin-top:6px">Feel free to express yourself. Our chatbot is here to listen and offer supportive responses without any judgment.</span>
+  </div>  
+
+  <div><span class="skill_percentage">😊</span></div>
+
+  <div class="skill_bar skill_ml"></div>
+</div>
+
+<div class="skills_data" data-aos="fade-right">
+  <div class="skills_name">
+    <span class="skill_name">Personalized Assessment</span>
+    <span style="font-size: 0.8rem; font-weight: 300; margin-top:6px">Take our specially designed quiz to gain insights into your mental well-being and get personalized feedback.</span>
+  </div>  
+
+  <div><span class="skill_percentage">✅</span></div>
+
+  <div class="skill_bar skill_ml"></div>
+</div>
+
+<div class="skills_data" data-aos="fade-right">
+  <div class="skills_name">
+    <span class="skill_name">Accessible Anytime, Anywhere</span>
+    <span style="font-size: 0.8rem; font-weight: 300; margin-top:6px">Access Sahasya anytime you need support, whether you're on your phone or computer. We’re here for you, day or night.</span>
+  </div>  
+
+  <div><span class="skill_percentage">🌍</span></div>
+
+  <div class="skill_bar skill_ml"></div>
+</div>
+
+<div class="skills_data" data-aos="fade-right">
+  <div class="skills_name">
+    <span class="skill_name">Confidential & Private</span>
+    <span style="font-size: 0.8rem; font-weight: 300; margin-top:6px">Your privacy is our priority. Conversations and quiz results are kept strictly confidential and secure.</span>
+  </div>  
+
+  <div><span class="skill_percentage">🔒</span></div>
+
+  <div class="skill_bar skill_ml"></div>
+</div>
+
+          </div>
+
+          <div data-aos="fade-left" data-aos-delay="350">
+            <img style="margin-left:5rem; border-radius:20%" src="https://cater2.me/wp-content/uploads/2021/05/bigstock-Mental-Health-Due-To-Psycholog-417713128.jpg">
+          </div>
+        </div>
+      </section>
+
+      <!-- WORK SECTION -->
+<section class="work section" id="work">
+  <h2 class="section-title" data-aos="fade-down">Services</h2>
+
+  <div class="work_container bd_grid" data-aos="fade-down" data-aos-delay="250">
+    
+    <!-- GitHub Repo 1 -->
+    <div class="work_item">
+      <a href="#" target="_blank">
+        🤖
+        <h3 class="work_title">Mental Health Assessment</h3>
+        <p class="work_description">Discover insights into your mental well-being with our quick and easy self-assessment. This test is designed to help you gain a better understanding of your emotional health and identify any areas where you might need support.</p>
+      </a>
+    </div>
+    
+    <!-- GitHub Repo 2 -->
+    <div class="work_item">
+      <a href='#' target="_blank">
+        📝
+        <h3 class="work_title">Personal Mental Healthcare Assistant</h3>
+        <p class="work_description">Whether you're looking for a supportive conversation or need guidance on managing stress, anxiety, or other emotional challenges, our chatbot is here to listen, offer helpful advice, and provide non-judgmental support whenever you need it. You're never alone – let's start the conversation.</p>
+      </a>
+    </div>
+    
+  </div>
+</section>
+
+<style>
+  .work_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .work_item {
+    background: #ffadad7a; /* Peachish background */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .work_item:hover {
+    transform: scale(1.05);
+    background: #ffadad; /* Lighter orange on hover */
+  }
+  .work_icon {
+    font-size: 2rem;
+    color: #ff6f61; /* Peachy pink icon color */
+    margin-bottom: 10px;
+  }
+  .work_title {
+    font-size: 1.25rem;
+    margin: 10px 0;
+    color: #e91e63; /* Darker orange for title */
+  }
+  .work_description {
+    font-size: 1rem;
+    color:#d20048b0; /* Soft orange for description */
+  }
+</style>
+
+
+
+      <!-- CONTACT SECTION -->
+
+      <section class="contact section" id="contact">
+        <h2 class="section-title" data-aos="fade-down">Contact</h2>
+
+        <div class="contact_container bd_grid">
+          <form action="#" class="contact_form">
+            <input
+              type="text"
+              placeholder="Name"
+              class="control_input"
+              data-aos="fade-right"
+              data-aos-delay="250"
+            />
+            <input
+              type="mail"
+              placeholder="Email"
+              class="control_input"
+              data-aos="fade-right"
+              data-aos-delay="300"
+            />
+            <textarea
+              name=""
+              id=""
+              cols="0"
+              rows="10"
+              class="control_input"
+              data-aos="fade-right"
+              data-aos-delay="400"
+            ></textarea>
+
+            <input
+              type="button"
+              value="Send"
+              class="control_button button"
+              data-aos="fade-right"
+              data-aos-delay="450"
+            />
+          </form>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer class="footer">
+        <p class="footer_title" data-aos="fade-down">Sahasya - Your Personal Mental Care Companion  </p>
+
+        <div class="footer_socials">
+          <a
+            href="#"
+            class="footer_icon"
+            data-aos="fade-down"
+            data-aos-delay="250"
+            ><i class="bx bxl-facebook-circle"></i
+          ></a>
+          <a
+            href="#"
+            class="footer_icon"
+            data-aos="fade-down"
+            data-aos-delay="350"
+            ><i class="bx bxl-instagram"></i
+          ></a>
+          <a
+            href="#"
+            class="footer_icon"
+            data-aos="fade-down"
+            data-aos-delay="450"
+            ><i class="bx bxl-twitter"></i
+          ></a>
+          <a
+            href="#"
+            class="footer_icon"
+            data-aos="fade-down"
+            data-aos-delay="550"
+            ><i class="bx bxl-github"></i
+          ></a>
+        </div>
+
+        <p data-aos="fade-down" data-aos-delay="650">
+          &#169; 2021 copyright all right reserved
+        </p>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="C:\Users\DELL\Desktop\Complete ai\Final_Projectv1\Project\metal_health\static\js\main.js"></script>
+
+    <script>
+      AOS.init({
+        duration: 1200,
+        once: true, // animations run every time the element enters the viewport
+        mirror: false // animations reset when scrolling back up
+      });
+    </script>
+  </body>
+</html>

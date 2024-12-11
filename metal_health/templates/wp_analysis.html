@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wp_Questionnaire</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../static/css/index_style.css" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Scripts -->
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f8f1f0;
+        color: #333;
+      }
+
+      .questions_container {
+        width: 58%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+      }
+      
+      .question-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #e69582;
+        border-radius: 8px;
+        padding: 20px;
+        background-image: url("../static/images/designer_faded.jpg"); /* Update with your actual image path */
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px; /* Match the parent border radius */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 5px;
+        margin-top: 40px;
+        width: 100%;
+      }
+      
+      .question-box h2 {
+        font-size: 4rem;
+        font-family: emoji;
+        color: #c84627;
+        margin-bottom: 1rem;
+        font-weight: bolder;
+        position: relative;
+      }
+
+      .question-box h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30%;
+        height: 2px;
+        background-color: #c84627;
+      }
+
+      .question-text {
+        font-size: 2rem;
+        margin: 20px;
+        font-family: serif;
+        text-align: center;
+      }
+
+      .input-field {
+        margin-bottom: 20px;
+        display: flex; /* Use flexbox for alignment */
+        justify-content: center; /* Center content horizontally */
+      }
+
+      .input-field input {
+        width: 90%; /* Increase this percentage for a wider input */
+        min-width: 400px; /* Set a higher minimum width */
+        max-width: 800px; /* Optional: limit the maximum width */
+        padding: 15px; /* Add more padding for better aesthetics */
+        border: 1px solid #ccc; /* Optional: add a border */
+        border-radius: 4px; /* Optional: rounded corners */
+        font-size: 1.5rem; /* Adjust font size if necessary */
+      }
+
+      .option-button {
+        background-color: #741d2c;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 12px 18px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+      }
+
+      .option-button:hover {
+        background-color: #e69582;
+      }
+
+      .progress-bar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+
+      .progress-bar {
+        width: 100%;
+        background-color: #ddd;
+        height: 10px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 8px;
+      }
+
+      .progress {
+        width: 10%;
+        background-color: #db7e68;
+        height: 100%;
+      }
+
+      .question-counter {
+        font-size: 2rem;
+        color: #741d2c;
+        margin: 1rem;
+        font-weight: bold;
+      }
+
+      .note {
+        font-size: 1rem;
+        color: black;
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .bot-image {
+        z-index: -1;
+        position: absolute;
+        width: 20%;
+        top: 40%;
+        transform: translateY(-50%);
+        right: 10rem;
+      }
+
+      /* Styles for final "Thank you" message */
+      .thank-you-message {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: emoji;
+        color: #741d2c;
+        text-align: center;
+        margin-top: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light header">
+      <div class="container">
+        <a class="navbar_brand" href="{{ url_for('about') }}">
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='images/logo.jpg') }}"
+            alt="logo"
+          />
+          Sahasya
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="lists collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}">CHATBOT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('start') }}"
+                >ANALYSIS</a
+              >
+            </li>
+            <!-- Profile Section in Navbar -->
+            <li class="nav-item">
+              <a class="nav-link profile_details" href="#" id="profileLink"
+                >PROFILE</a
+              >
+              <div id="profileDropdown" class="dropdown-content">
+                <div class="profile-picture">
+                  <img
+                    id="profile_details_pic"
+                    src="{{ url_for('static', filename='images/profile.webp') }}"
+                    alt="user profile"
+                  />
+                </div>
+                <div class="profile-detail">
+                  <strong>Name:</strong> {{ session.get('name', 'John Doe') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Age:</strong> {{ session.get('age', '30') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Gender:</strong> {{ session.get('gender', 'Male') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Email:</strong> {{ session.get('user',
+                  'john.doe@example.com') }}
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link logout-icon"
+                href="{{ url_for('login') }}"
+                id="logoutLink"
+                title="Logout"
+              >
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Animated Background Section -->
+    <div class="area">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <div class="questions_container">
+      <div class="question-box">
+        <h2>Question <span id="question-number">1</span></h2>
+        <p class="question-text" id="question-text">What is your age?</p>
+        <div class="input-field">
+          <input
+            type="number"
+            id="numericInput"
+            min="1"
+            max="120"
+            placeholder="Enter your age"
+            onkeydown="handleKeyPress(event)"
+          />
+        </div>
+        <p
+          id="error-message"
+          style="color: red; font-size: 1.2rem; display: none"
+        >
+          Please enter a valid input within the specified range.
+        </p>
+        <button class="option-button" onclick="nextQuestion()">Next</button>
+      </div>
+      <img
+        class="bot-image"
+        src="../static/images/bot_peeping.png"
+        alt="Bot Peeping"
+      />
+      <div class="progress-bar-container">
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+        </div>
+        <p class="question-counter" id="question-counter">Question 1 of 6</p>
+      </div>
+      <p class="note">
+        When answering the above questions please consider how they have applied
+        to you in the last 6 months or so.
+      </p>
+      <form
+        id="questionForm"
+        method="POST"
+        action="{{ url_for('wp_analysis') }}"
+      >
+        <input type="hidden" name="answers" id="answers" />
+      </form>
+    </div>
+    <script>
+      // JavaScript for Profile Functionality
+      const profileLink = document.getElementById("profileLink");
+      const profileDropdown = document.getElementById("profileDropdown");
+
+      profileLink.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+        profileDropdown.classList.toggle("show"); // Toggle the visibility class
+      });
+
+      // Hide dropdown when clicking anywhere else on the screen
+      document.addEventListener("click", function (event) {
+        if (
+          !profileLink.contains(event.target) &&
+          !profileDropdown.contains(event.target)
+        ) {
+          profileDropdown.classList.remove("show"); // Remove visibility class
+        }
+      });
+
+      const questions = [
+        {
+          text: "What is your age?",
+          type: "number",
+          min: 1,
+          max: 120,
+          placeholder: "Enter your age",
+        },
+        {
+          text: "On average, how many hours do you sleep each night?",
+          type: "number",
+          min: 0,
+          max: 12,
+          placeholder: "Enter hours (0-12)",
+        },
+        {
+          text: "How many hours do you engage in physical activity or exercise per day?",
+          type: "number",
+          min: 0,
+          max: 5,
+          placeholder: "Enter hours (0-5)",
+        },
+        {
+          text: "How many hours do you spend interacting socially with others each day?",
+          type: "number",
+          min: 0,
+          max: 5,
+          placeholder: "Enter hours (0-5)",
+        },
+        {
+          text: "On a scale from 1 to 10, how would you rate your current stress level?",
+          type: "number",
+          min: 1,
+          max: 10,
+          placeholder: "1 = Very Low, 10 = Very High",
+        },
+        {
+          text: "On a scale from 1 to 10, how would you rate your self-esteem?",
+          type: "number",
+          min: 1,
+          max: 10,
+          placeholder: "1 = Very Low, 10 = Very High",
+        },
+      ];
+
+      let currentQuestionIndex = 0;
+      const answers = []; // Array to store answers for each question
+
+      function loadQuestion() {
+        const questionText = document.getElementById("question-text");
+        const inputField = document.getElementById("numericInput");
+        const questionCounter = document.getElementById("question-counter");
+        const progress = document.getElementById("progress");
+        const questionNumber = document.getElementById("question-number");
+        const errorMessage = document.getElementById("error-message");
+
+        const currentQuestion = questions[currentQuestionIndex];
+        questionText.textContent = currentQuestion.text;
+        inputField.type = currentQuestion.type;
+        inputField.min = currentQuestion.min;
+        inputField.max = currentQuestion.max;
+        inputField.placeholder = currentQuestion.placeholder;
+
+        // Update question number and progress bar
+        questionNumber.textContent = currentQuestionIndex + 1;
+        questionCounter.textContent = `Question ${
+          currentQuestionIndex + 1
+        } of ${questions.length}`;
+        progress.style.width = `${
+          ((currentQuestionIndex + 1) / questions.length) * 100
+        }%`;
+
+        // Reset error message and input field
+        errorMessage.style.display = "none";
+        inputField.value = "";
+      }
+
+      function nextQuestion() {
+        const inputField = document.getElementById("numericInput");
+        const errorMessage = document.getElementById("error-message");
+        const currentQuestion = questions[currentQuestionIndex];
+
+        // Validate input
+        if (
+          inputField.value === "" ||
+          Number(inputField.value) < currentQuestion.min ||
+          Number(inputField.value) > currentQuestion.max
+        ) {
+          errorMessage.textContent = `Please enter a value between ${currentQuestion.min} and ${currentQuestion.max}.`;
+          errorMessage.style.display = "block";
+          return;
+        }
+
+        // Hide error message and save answer
+        errorMessage.style.display = "none";
+        answers.push(Number(inputField.value));
+
+        // Move to the next question or submit answers
+        if (currentQuestionIndex < questions.length - 1) {
+          currentQuestionIndex++;
+          loadQuestion();
+        } else {
+          submitAnswers();
+        }
+      }
+
+      function handleKeyPress(event) {
+        if (event.key === "Enter") {
+          nextQuestion();
+        }
+      }
+
+      function submitAnswers() {
+        // Set JSON string of answers to hidden input and submit the form
+        document.getElementById("answers").value = JSON.stringify(answers);
+        document.getElementById("questionForm").submit();
+      }
+
+      function displayThankYouMessage() {
+        const questionBox = document.querySelector(".question-box");
+        questionBox.innerHTML =
+          '<p class="thank-you-message">Thank you for completing the questionnaire!</p>';
+        document.getElementById("progress").style.width = "100%";
+      }
+
+      loadQuestion(); // Initial call to load the first question
+    </script>
+  </body>
+</html>

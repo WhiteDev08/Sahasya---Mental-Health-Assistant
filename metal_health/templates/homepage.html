@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sahasya</title>
+    <!-- Stylesheets -->
+    <!-- <link rel="stylesheet" href="../static/css/index_style.css" /> -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Scripts -->
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    
+    <style>
+        /* Navbar -- Start */
+
+        .profile-picture {
+        text-align: center; /* Center the profile picture */
+        margin-bottom: 20px; /* Spacing below the image */
+        }
+
+        .profile-picture img {
+        width: 120px; /* Set a width for the profile picture */
+        height: 120px; /* Set a height for the profile picture */
+        border-radius: 50%; /* Make the image circular */
+        border: 2px solid #ff69b4; /* Pink border around the image */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect on the image */
+        }
+
+        .dropdown-content {
+        display: none; /* Hide by default */
+        position: absolute;
+        right: 1.1rem;
+        top: 4.4rem;
+        background-color: #ffe4b5; /* Light peach background */
+        min-width: 300px; /* Minimum width */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
+        z-index: 1;
+        border-radius: 0 0 8px 8px; /* Only bottom corners are rounded */
+        padding: 15px; /* Padding for better spacing */
+        transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+        opacity: 0; /* Start as invisible */
+        visibility: hidden; /* Start as hidden */
+        border: 2px solid #ff69b4; /* Pink border around the image */
+        border-top: 0 solid black;
+        }
+
+        .dropdown-content.show {
+        display: block; /* Show when active */
+        opacity: 1; /* Fully visible */
+        visibility: visible; /* Set to visible */
+        backdrop-filter: blur(10px);
+        }
+
+        .profile-detail {
+        margin: 10.5px 0; /* Margin between details */
+        font-size: 14px; /* Slightly smaller text for elegance */
+        color: #430b2c; /* Dark text for readability */
+        padding: 10px; /* Padding for detail boxes */
+        border: 2px solid #ff69b4; /* Pink border */
+        border-radius: 8px; /* Rounded corners */
+        background-color: white; /* White background for each detail */
+        transition: background-color 0.3s ease; /* Smooth background transition */
+        position: relative; /* For shadow effect */
+        padding-left: 20px; /* Padding from the left for alignment */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        text-align: left; /* Align text to the left */
+        }
+
+        .profile-detail:hover {
+        background-color: #ffb6c1; /* Light pink on hover */
+        }
+
+        .profile-detail strong {
+        color: #e76c3f; /* Coral color for labels */
+        }
+
+        .profileDropdown {
+        z-index: 2;
+        }
+
+        /*<--end-->*/
+
+        .navbar .navbar-toggler {
+        border: none;
+        }
+        .navbar.navbar-expand-lg {
+        z-index: 2;
+        position: fixed !important;
+        justify-content: flex-start;
+        top: 0;
+        width: 100%;
+        background: #fff5ee;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header.fixed {
+        z-index: 1;
+        }
+        .navbar.navbar-expand-lg .navbar-nav {
+        gap: 20px;
+        align-items: center;
+        }
+
+        img.logo {
+        width: 50px;
+        border-radius: 50px;
+        }
+
+        .nav-item .nav-link {
+        font-size: 17px;
+        font-weight: 600;
+        color: #dc143c;
+        }
+
+        .nav-item .nav-link.active {
+        font-size: 20px;
+        font-weight: 800;
+        color: rgb(122 43 70);
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(192, 57, 43, 0.8);
+        }
+
+        .navbar_brand {
+        font-size: 25px;
+        font-weight: 900;
+        color: #811331;
+        text-decoration: none;
+        }
+        /* Navbar -- End */
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #FFE5D9;
+        }
+
+        /* Container */
+        .container1 {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header1 {
+            position: relative;
+            color: #fffefe;
+            text-align: center;
+            padding: 70px 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            overflow: hidden;
+        }
+
+        .header1::before {
+            content: "";
+            position: absolute;
+            padding-top: 30%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../static/images/image.png') no-repeat center center/cover;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .header1 h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header1 p {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: #FFD3B6;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .features h2 {
+            font-size: 2em;
+            color: #FF7F7F;
+            margin-bottom: 20px;
+        }
+
+        .feature-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 45%;
+            min-width: 220px;
+            transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 15px rgba(255, 153, 102, 0.5);
+        }
+
+        .card .icon {
+            width: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            color: transparent;
+            background-image: linear-gradient(45deg, #d9534f, #ff6392, #d9534f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            font-weight: 700;
+            transition: color 0.3s ease, -webkit-text-stroke 0.3s ease;
+        }
+
+        .card:hover h3 {
+            color: #d9534f;
+            -webkit-text-stroke: 0.5px #d9534f;
+        }
+
+
+        .card p {
+            font-size: 1em;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* About Us Section */
+        .about-us {
+            background-color: #fba4a4;
+            padding: 50px 20px;
+            text-align: center;
+            color: #fff;
+            border-radius: 10px;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .about-us h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .about-us p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light header">
+        <div class="container">
+          <a class="navbar_brand" href="{{ url_for('home') }}">
+            <img
+              class="logo"
+              src="{{ url_for('static', filename='images/logo.jpg') }}"
+              alt="logo"
+            />
+            Sahasya
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="lists collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">CHATBOT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{{ url_for('start') }}"
+                  >ANALYSIS</a
+                >
+              </li>
+              <!-- Profile Section in Navbar -->
+              <li class="nav-item">
+                <a class="nav-link profile_details" href="#" id="profileLink"
+                  >PROFILE</a
+                >
+                <div id="profileDropdown" class="dropdown-content">
+                  <div class="profile-picture">
+                    <img
+                      id="profile_details_pic"
+                      src="{{ url_for('static', filename='images/profile.webp') }}"
+                      alt="user profile"
+                    />
+                  </div>
+                  <div class="profile-detail">
+                    <strong>Name:</strong> {{ session.get('name', 'John Doe') }}
+                  </div>
+                  <div class="profile-detail">
+                    <strong>Age:</strong> {{ session.get('age', '30') }}
+                  </div>
+                  <div class="profile-detail">
+                    <strong>Gender:</strong> {{ session.get('gender', 'Male') }}
+                  </div>
+                  <div class="profile-detail">
+                    <strong>Email:</strong> {{ session.get('user',
+                    'john.doe@example.com') }}
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a
+                class="nav-link logout-icon"
+                href="{{ url_for('login') }}"
+                id="logoutLink"
+                title="Logout"
+              >
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <br>
+    <br>
+
+    <!-- Header Section -->
+    <header class="header1">
+        <div class="container1">
+            <h1>Welcome to Sahasya</h1>
+            <p>Your journey to better mental health starts here. At Sahasya, we understand that life can be overwhelming, and sometimes, you just need someone to listen.</p>
+            <p>This platform is dedicated to supporting you with tools for self-discovery and mental wellness. Explore our quiz to understand your mental state better or chat with our friendly, supportive bot when you need someone to talk to.</p>
+        </div>
+    </header>
+
+    <!-- Mission and Features Section -->
+     
+    <section class="features">
+        <div class="container1">
+            <h2>Our Mission and Features</h2>
+            <div class="feature-cards">
+                <div class="card">
+                    <h3>Non-Judgmental Support</h3>
+                    <p>Feel free to express yourself. Our chatbot is here to listen and offer supportive responses without any judgment.</p>
+                </div>
+                <div class="card">
+                    <h3>Personalized Quiz</h3>
+                    <p>Take our specially designed quiz to gain insights into your mental well-being and get personalized feedback.</p>
+                </div>
+                <div class="card">
+                    <h3>Accessible Anytime, Anywhere</h3>
+                    <p>Access Sahasya anytime you need support, whether you're on your phone or computer. We’re here for you, day or night.</p>
+                </div>
+                <div class="card">
+                    <h3>Confidential & Private</h3>
+                    <p>Your privacy is our priority. Conversations and quiz results are kept strictly confidential and secure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us">
+        <div class="container1">
+            <h2>Meet the Team</h2>
+            <p>Sahasya was created by a team of passionate developers studying in VIT Chennai to help people feel better. We are committed to creating a positive, supportive environment and to helping people on their journey to mental wellness.</p>
+            <p><strong>Our Mission:</strong> To provide a safe and supportive environment for everyone seeking mental health support, judgment-free.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>© 2024 Sahasya. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function startAssessment() {
+          // Redirect to the category selection page
+          window.location.href = "{{ url_for('category') }}";
+        }
+        // Profile Functionality
+  
+        const profileLink = document.getElementById("profileLink");
+        const profileDropdown = document.getElementById("profileDropdown");
+  
+        profileLink.addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent the default link behavior
+          profileDropdown.classList.toggle("show"); // Toggle the visibility class
+        });
+  
+        // Hide dropdown when clicking anywhere else on the screen
+        document.addEventListener("click", function (event) {
+          if (
+            !profileLink.contains(event.target) &&
+            !profileDropdown.contains(event.target)
+          ) {
+            profileDropdown.classList.remove("show"); // Remove visibility class
+          }
+        });
+      </script>
+</body>
+</html>

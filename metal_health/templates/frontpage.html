@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sahasya</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../static/css/index_style.css" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <style>
+      .frontpage_contents {
+        position: relative;
+        background-image: url("../static/images/img.png");
+        background-position: center 0.1rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #b67d5e;
+      }
+
+      .fcontent {
+        width: 1000px;
+        margin-left: -200px;
+        margin-top: 3rem;
+      }
+
+      .fcontent h1 {
+    font-size: 3rem; /* Reduced from 4rem */
+    color: #640f26;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+
+.fcontent p {
+    font-size: 1.8rem; /* Reduced from 2.7rem */
+    margin-top: -1.5rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.3;
+    color: #230808;
+}
+
+      .fcontent p {
+        font-size: 2.7rem;
+        margin-top: -2rem;
+        margin-bottom: 3rem;
+        line-height: 1.3;
+        color: #230808;
+      }
+
+      .fborder {
+        border-left: 3px solid #8a002f;
+      }
+
+      .feature {
+        padding-left: 15px;
+        margin-bottom: 30px;
+      }
+
+      .feature h2 {
+    font-size: 1.5em; /* Reduced from 1.8em */
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #8a002f;
+}
+
+.feature p {
+    font-size: 0.9em; /* Reduced from 1em */
+    margin: 0.2rem 1rem;
+    color: #201c18;
+}
+
+      .fbutton-container {
+        margin-top: 1.5rem;
+      }
+
+      .start-btn {
+        display: inline-block;
+        background-color: #840631;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        margin-left: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .start-btn:hover {
+        background-color: #da306a;
+      }
+
+      @media (max-width: 576px) {
+        header {
+          height: auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 2rem;
+          background: linear-gradient(
+            90deg,
+            #ff9a9e,
+            #fad0c4
+          ); /* Gradient effect */
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
+        }
+
+        .content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 2rem 0.5rem;
+          padding: 0 4rem;
+        }
+
+        .content h1 {
+          font-size: 1.6rem;
+          margin: 1rem;
+          display: block;
+          margin-bottom: 3.5rem;
+        }
+        .content p {
+          font-size: 1rem;
+        }
+
+        .container {
+          margin-top: 2rem;
+        }
+
+        .feature h2 {
+          font-size: 1.1rem;
+        }
+        .feature p {
+          font-size: 0.8rem;
+        }
+        .start-btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="frontpage_contents">
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-light header">
+      <div class="container">
+        <a class="navbar_brand" href="{{ url_for('about') }}">
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='images/logo.jpg') }}"
+            alt="logo"
+          />
+          Sahasya
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="lists collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}">CHATBOT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('start') }}"
+                >ANALYSIS</a
+              >
+            </li>
+
+            <!-- Profile Section in Navbar -->
+            <li class="nav-item">
+              <a class="nav-link profile_details" href="#" id="profileLink"
+                >PROFILE</a
+              >
+              <div id="profileDropdown" class="dropdown-content">
+                <div class="profile-picture">
+                  <img
+                    id="profile_details_pic"
+                    src="{{ url_for('static', filename='images/profile.webp') }}"
+                    alt="user profile"
+                  />
+                </div>
+                <div class="profile-detail">
+                  <strong>Name:</strong> {{ session.get('name', 'John Doe') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Age:</strong> {{ session.get('age', '30') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Gender:</strong> {{ session.get('gender', 'Male') }}
+                </div>
+                <div class="profile-detail">
+                  <strong>Email:</strong> {{ session.get('user',
+                  'john.doe@example.com') }}
+                </div>
+              </div>
+            </li>
+            <!-- Profile END -->
+            <li class="nav-item">
+              <a
+                class="nav-link logout-icon"
+                href="{{ url_for('login') }}"
+                id="logoutLink"
+                title="Logout"
+              >
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="fcontent">
+      <h1>Take a Step Towards Mental Wellness</h1>
+      <p id="captions">A Compassionate Self-Assessment Experience</p>
+
+
+      <div class="container fcontents">
+        <div class="feature fborder">
+            <h2>Quick and Effortless</h2>
+            <p>Spend just a few moments to begin understanding your mental health better.</p>
+        </div>
+        <div class="feature">
+            <h2>Completely Confidential</h2>
+            <p>Your privacy is our top priority, ensuring safe and secure results.</p>
+        </div>
+        <div class="feature">
+            <h2>Personalized Insights</h2>
+            <p>Gain meaningful perspectives that are crafted to help you on your wellness journey.</p>
+        </div>
+    </div>
+      <div class="fbutton-container">
+        <a href="{{ url_for('quiz_intro') }}" class="start-btn">Start Test →</a>
+      </div>
+    </div>
+    <script>
+      // <!-- JavaScript for Profile Functionality -->
+
+      const profileLink = document.getElementById("profileLink");
+      const profileDropdown = document.getElementById("profileDropdown");
+
+      profileLink.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+        profileDropdown.classList.toggle("show"); // Toggle the visibility class
+      });
+
+      // Hide dropdown when clicking anywhere else on the screen
+      document.addEventListener("click", function (event) {
+        if (
+          !profileLink.contains(event.target) &&
+          !profileDropdown.contains(event.target)
+        ) {
+          profileDropdown.classList.remove("show"); // Remove visibility class
+        }
+      });
+    </script>
+  </body>
+</html>
