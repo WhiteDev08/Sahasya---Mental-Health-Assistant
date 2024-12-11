@@ -1,0 +1,9 @@
+Flask
+Flask-SQLAlchemy
+Werkzeug
+tensorflow
+keras
+nltk
+numpy
+pandas
+joblib
