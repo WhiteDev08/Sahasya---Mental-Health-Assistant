@@ -7,6 +7,8 @@ import json
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
 # Add the path to the Chatbot_Final folder dynamically
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../Chatbot_Final')))
 
