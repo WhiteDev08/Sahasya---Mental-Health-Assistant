@@ -36,8 +36,10 @@ with app.app_context():
     db.create_all()
 
 # Load models (adjust paths as necessary)
-working_model = joblib.load(r"C:\Users\DELL\Desktop\Complete ai\Final_Projectv1\Project\metal_health\models\Sahasya_model_1_Decision.pkl")
-student_model = joblib.load(r"C:\Users\DELL\Desktop\Complete ai\Final_Projectv1\Project\metal_health\models\Sahasya_model_2_SVM.pkl")
+working_model_path = os.path.join(base_dir, 'models', 'Sahasya_model_1_Decision.pkl')
+student_model_path = os.path.join(base_dir, 'models', 'Sahasya_model_2_SVM.pkl')
+working_model = joblib.load(working_model_path)
+student_model = joblib.load(student_model_path)
 
 # Route to login page (login_page.html)
 @app.route('/')
