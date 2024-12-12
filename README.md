@@ -40,7 +40,12 @@ The project is deployed using **Render**. The deployment uses:
 ---
 
 ### Authors ✍️
-- **Keshav** - Developer and Maintainer
+- **Keshav**
+- **Afreen Samiullah**
+- **Boogitha Sivakumar**
+- **Anirudh.S**
+- **Bhargav Kamath**
+- **Sruthi** 
 
 
 
