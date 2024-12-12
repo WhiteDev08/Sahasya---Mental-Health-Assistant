@@ -10,6 +10,9 @@ from keras.models import load_model
 from nltk.stem import WordNetLemmatizer
 import nltk
 nltk.download('punkt')
+#Disable GPU
+import tensorflow as tf
+tf.config.set_visible_devices([], 'GPU')
 
 # Set base directory for loading files relative to app1new.py
 base_dir = os.path.dirname(os.path.abspath(__file__))
