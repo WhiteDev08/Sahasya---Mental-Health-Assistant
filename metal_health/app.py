@@ -1,5 +1,11 @@
-import sys
 import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+
+import tensorflow as tf
+tf.config.set_visible_devices([], 'GPU')
+
+import sys
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash
 import joblib
 import pandas as pd
