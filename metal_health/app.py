@@ -13,7 +13,7 @@ base_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../Chatbot_Final')))
 
 # Import chatbot_response after modifying the Python path
-from app1new import chatbot_response  # Ensure this line is correctly placed
+from Chatbot_Final.app1new import chatbot_response  # Ensure this line is correctly placed
  
 
 app = Flask(__name__)
