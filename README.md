@@ -65,7 +65,8 @@ The project is deployed using **Render**. The deployment uses:
   - `runtime.txt` 📜 for Python version.
   - `requirements.txt` 📂 for dependency versions.
 - If you encounter issues, verify your local environment matches the required configurations. 🔧
-**THIS WAS BUILT ON PYTHON 3.10.0**
+---
+**This was built on python 3.10.0**
 ---
 ### Authors ✍️
 - **Keshav** - Chatbot and Machine Learning  
