@@ -68,12 +68,12 @@ The project is deployed using **Render**. The deployment uses:
 
 ---
 ### Authors ✍️
-- **Keshav**
-- **Afreen Samiullah**
-- **Boogitha Sivakumar**
-- **Anirudh.S**
-- **Bhargav Kamath**
-- **Sruthi** 
+- **Keshav** - Chatbot and Machine Learning  
+- **Afreen Samiullah** - Web Development  
+- **Boogitha Sivakumar** - Web Development  
+- **Anirudh.S** - Chatbot and Machine Learning  
+- **Bhargav Kamath** - Chatbot and Machine Learning  
+- **Sruthi** - Web Development 
 
 
 
