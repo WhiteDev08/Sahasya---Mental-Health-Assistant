@@ -38,7 +38,24 @@ The project is deployed using **Render**. The deployment uses:
 - **Deployment Platform**: Render 🌐
 
 ---
+# Installation and Setup
 
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/WhiteDev08/Sahasya---Mental-Health-Assistant.git
+   cd Sahasya---Mental-Health-Assistant
+
+2.**Ensure the exact versions:**
+- Use the **Python version** specified in `runtime.txt`.
+- Install dependencies using the versions listed in `requirements.txt`.
+
+3.**Install dependencies:**
+pip install -r requirements.txt
+
+4.**Run the application locally**:
+python app.py
+
+---
 ### Authors ✍️
 - **Keshav**
 - **Afreen Samiullah**
