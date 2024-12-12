@@ -50,11 +50,11 @@ The project is deployed using **Render**. The deployment uses:
 - Install dependencies using the versions listed in `requirements.txt`.
 
 3.**Install dependencies:**
-  ```bash
-  pip install -r requirements.txt
+    ```bash
+    pip install -r requirements.txt
 
-4.**Run the application locally**:
-python app.py
+4.**Run the application locally:**
+  python app.py
 
 ---
 ### Authors ✍️
