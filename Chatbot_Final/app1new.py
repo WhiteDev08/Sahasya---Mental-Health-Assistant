@@ -23,6 +23,9 @@ try:
     words = pickle.load(open(os.path.join(base_dir, 'updated_wordsv6.pkl'), 'rb'))
     classes = pickle.load(open(os.path.join(base_dir, 'updated_classesv6.pkl'), 'rb'))
     model = load_model(os.path.join(base_dir, 'chatbot_model.h5'))
+    
+    # Compile the loaded model to avoid warnings
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 except FileNotFoundError as e:
     print(f"File not found: {e}")
     raise
