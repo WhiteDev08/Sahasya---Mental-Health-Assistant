@@ -57,6 +57,16 @@ The project is deployed using **Render**. The deployment uses:
   python app.py
 
 ---
+## Disclaimer ⚠️
+
+🚨 **Important Note**:
+- This project has been tested to work **only on local machines** 🖥️ and may not function correctly on deployment platforms like Render 🌐 due to environment and version compatibility issues.
+- Please ensure you strictly follow the versions specified in:
+  - `runtime.txt` 📜 for Python version.
+  - `requirements.txt` 📂 for dependency versions.
+- If you encounter issues, verify your local environment matches the required configurations. 🔧
+
+---
 ### Authors ✍️
 - **Keshav**
 - **Afreen Samiullah**
