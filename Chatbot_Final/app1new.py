@@ -9,6 +9,8 @@ import os
 import nltk
 nltk.download('punkt')
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 # Set base directory for loading files relative to app1new.py
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
