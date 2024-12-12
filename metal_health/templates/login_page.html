@@ -1,343 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Wellness Journey</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <style>
-      /* General Reset */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Wellness Journey</title>
 
-      /* Background animation */
-      @keyframes backgroundPulse {
-        0%,
-        100% {
-          transform: scale(1); /* Original size */
-        }
-        50% {
-          transform: scale(1.05); /* Slightly larger */
-        }
-      }
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-      /* Body and Background */
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-        position: relative;
-        background: linear-gradient(
-          rgba(255, 209, 148, 0.8),
-          rgba(255, 94, 98, 0.6)
-        );
+    /* Background animation */
+    @keyframes backgroundPulse {
+      0%,
+      100% {
+        transform: scale(1); /* Original size */
       }
+      50% {
+        transform: scale(1.05); /* Slightly larger */
+      }
+    }
 
-      /* Background circles animation */
-      .area {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-      }
-
-      .circles {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
-
-      .circles li {
-        position: absolute;
-        display: block;
-        list-style: none;
-        width: 20px;
-        height: 20px;
-        background: rgba(255, 255, 255, 0.5);
-        animation: animate 25s linear infinite;
-        bottom: -150px;
-        border-radius: 10%;
-      }
-
-      /* Circle animation customization */
-      .circles li:nth-child(1) {
-        left: 25%;
-        width: 80px;
-        height: 80px;
-        animation-delay: 0s;
-      }
-      .circles li:nth-child(2) {
-        left: 10%;
-        width: 20px;
-        height: 20px;
-        animation-delay: 2s;
-        animation-duration: 12s;
-      }
-      .circles li:nth-child(3) {
-        left: 70%;
-        width: 20px;
-        height: 20px;
-        animation-delay: 4s;
-      }
-      .circles li:nth-child(4) {
-        left: 40%;
-        width: 60px;
-        height: 60px;
-        animation-delay: 0s;
-        animation-duration: 18s;
-      }
-      .circles li:nth-child(5) {
-        left: 65%;
-        width: 20px;
-        height: 20px;
-        animation-delay: 0s;
-      }
-      .circles li:nth-child(6) {
-        left: 75%;
-        width: 110px;
-        height: 110px;
-        animation-delay: 3s;
-      }
-      .circles li:nth-child(7) {
-        left: 35%;
-        width: 150px;
-        height: 150px;
-        animation-delay: 7s;
-      }
-      .circles li:nth-child(8) {
-        left: 50%;
-        width: 25px;
-        height: 25px;
-        animation-delay: 15s;
-        animation-duration: 45s;
-      }
-      .circles li:nth-child(9) {
-        left: 20%;
-        width: 15px;
-        height: 15px;
-        animation-delay: 2s;
-        animation-duration: 35s;
-      }
-      .circles li:nth-child(10) {
-        left: 85%;
-        width: 150px;
-        height: 150px;
-        animation-delay: 0s;
-        animation-duration: 11s;
-      }
-
-      @keyframes animate {
-        0% {
-          transform: translateY(0) rotate(0deg);
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-1000px) rotate(720deg);
-          opacity: 0;
-        }
-      }
-
-      /* Login Box */
-      .login-box {
-        width: 90%;
-        max-width: 400px;
-        background: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        z-index: 1;
-      }
-
-      /* Logo Placeholder */
-      img {
-        width: 100px;
-        height: 100px;
-        margin: 0 auto 20px;
-        background: #ffb089;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        color: white;
-        font-weight: bold;
-      }
-
-      /* Title */
-      h2 {
-        color: #ff5e62;
-        margin-bottom: 20px;
-      }
-
-      /* Input Fields */
-      .input-field {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        border: 1px solid #ff9b76;
-        border-radius: 5px;
-        outline: none;
-      }
-
-      .input-field:focus {
-        border-color: #ff5e62;
-      }
-
-      /* Button */
-      .login-btn {
-        width: 100%;
-        padding: 12px;
-        background: #ff5e62;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold;
-      }
-
-      .login-btn:hover {
-        background: #e14d4f;
-      }
-
-      /* Forgot Password and Register Link */
-      .register,
-      .forgot-password {
-        color: #ff5e62;
-        text-decoration: none;
-        font-size: 14px;
-      }
-
-      /* Space between login button and links */
-      .link-group {
-        margin-top: 15px; /* Add space between button and links */
-      }
-
-      .error-message {
-        color: red;
-        font-size: 14px;
-        margin: 5px;
-      }
-
-    /* Styling for the password container */
-    .password-container {
+    /* Body and Background */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
       position: relative;
-      margin-bottom: 10px;
+      background: linear-gradient(
+        rgba(255, 209, 148, 0.8),
+        rgba(255, 94, 98, 0.6)
+      );
     }
-    
-    /* Styling for the eye symbol */
-    .eye-symbol {
+
+    /* Background circles animation */
+    .area {
       position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .circles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .circles li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.5);
+      animation: animate 25s linear infinite;
+      bottom: -150px;
+      border-radius: 10%;
+    }
+
+    /* Circle animation customization */
+    .circles li:nth-child(1) {
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+    }
+    .circles li:nth-child(2) {
+      left: 10%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+    .circles li:nth-child(3) {
+      left: 70%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 4s;
+    }
+    .circles li:nth-child(4) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+    .circles li:nth-child(5) {
+      left: 65%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 0s;
+    }
+    .circles li:nth-child(6) {
+      left: 75%;
+      width: 110px;
+      height: 110px;
+      animation-delay: 3s;
+    }
+    .circles li:nth-child(7) {
+      left: 35%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 7s;
+    }
+    .circles li:nth-child(8) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 15s;
+      animation-duration: 45s;
+    }
+    .circles li:nth-child(9) {
+      left: 20%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 2s;
+      animation-duration: 35s;
+    }
+    .circles li:nth-child(10) {
+      left: 85%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 0s;
+      animation-duration: 11s;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Login Box */
+    .login-box {
+      width: 90%;
+      max-width: 400px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      z-index: 1;
+    }
+
+    /* Logo Placeholder */
+    img {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      background: #ffb089;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Title */
+    h2 {
+      color: #ff5e62;
+      margin-bottom: 20px;
+    }
+
+    /* Input Fields */
+    .input-field {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ff9b76;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border-color: #ff5e62;
+    }
+
+    /* Button */
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background: #ff5e62;
+      color: white;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
-      opacity: 0.5;
-      transition: opacity 0.3s;
-    }
-    
-    .eye-symbol:hover {
-      opacity: 1; /* Make the eye symbol more visible on hover */
-    }
-    
-    .eye-symbol i {
-      font-size: 20px; /* Adjust the icon size as needed */
-      color: #ff9b76; /* Adjust the icon color to match your design */
+      font-weight: bold;
     }
 
-    </style>
-  </head>
-  <body>
-    <!-- Animated Background Section -->
-    <div class="area">
-      <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
+    .login-btn:hover {
+      background: #e14d4f;
+    }
+
+    /* Forgot Password and Register Link */
+    .register,
+    .forgot-password {
+      color: #ff5e62;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    /* Space between login button and links */
+    .link-group {
+      margin-top: 15px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin: 5px;
+    }
+
+    /* Mobile View Message */
+    .mobile-view-message {
+    display: none;
+    text-align: center;
+    color: #ffffff;
+    padding: 60px;
+    font-size: 18px;
+   }
+
+    /* Media Query for Mobile */
+    @media screen and (max-width: 768px) {
+      .login-box {
+        display: none;
+      }
+
+      .mobile-view-message {
+        display: block;
+      }
+
+      body{
+	background:linear-gradient(to bottom, #ffb089, #ff5e62 50%, #ffb089);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Animated Background Section -->
+  <div class="area">
+    <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <!-- Mobile View Message -->
+  <div class="mobile-view-message">
+    <p>For the best experience, please view this site on a PC. Mobile view is currently unavailable.</p>
+  </div>
+
+
+  <div class="login-box">
+    <div class="logo-placeholder">
+      <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" />
     </div>
+    <h2>Welcome Back to Your Wellness Journey</h2>
 
-    <div class="login-box">
-      <div class="logo-placeholder">
-        <img
-          src="{{ url_for('static', filename='images/logo.jpg') }}"
-          alt="Logo"
-        />
-      </div>
-      <h2>Welcome Back to Your Wellness Journey</h2>
+    <!-- Display Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="error-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
-      <!-- Login Form -->
-      <form action="{{ url_for('login_submit') }}" method="POST">
-        <input
-          type="email"
-          id="loginEmail"
-          name="email"
-          class="input-field"
-          placeholder="Email Address"
-          required
-        />
-          <!-- Password Field -->
-          <div class="password-container">
-            <input
-              type="password"
-              name="password"
-              class="input-field password-input"
-              placeholder="Password"
-              required
-              minlength="6"
-              id="password"
-            />
-            <label class="eye-symbol">
-              <i class="fa fa-eye"></i> <!-- Font Awesome icon -->
-            </label>
-          </div>
+    <!-- Login Form -->
+    <form action="{{ url_for('login_submit') }}" method="POST">
+      <input
+        type="email"
+        id="loginEmail"
+        name="email"
+        class="input-field"
+        placeholder="Email Address"
+        required
+      />
+      <input
+        type="password"
+        id="loginPassword"
+        name="password"
+        class="input-field"
+        placeholder="Password"
+        required
+      />
+      <button type="submit" class="login-btn">Login</button>
+    </form>
 
-        <div id="loginError" class="error-message">
-          {{ error if error else "" }}
-        </div>
-        <button type="submit" class="login-btn">Login</button>
-      </form>
-
-      <div class="link-group">
-        <a href="{{ url_for('register') }}" class="register">Register</a> /
-        <a href="#" class="forgot-password">Forgot Password?</a>
-      </div>
+    <div class="link-group">
+      <a href="{{ url_for('register') }}" class="register">Register</a> /
+      <a href="#" class="forgot-password">Forgot Password?</a>
     </div>
-    <script>
-      // Function to toggle password visibility
-      const eyeSymbols = document.querySelectorAll('.eye-symbol');
-      eyeSymbols.forEach((eyeSymbol) => {
-        eyeSymbol.addEventListener('mouseover', () => {
-          const passwordField = eyeSymbol.previousElementSibling;
-          passwordField.type = 'text'; // Change type to 'text' to show password
-        });
-
-        eyeSymbol.addEventListener('mouseout', () => {
-          const passwordField = eyeSymbol.previousElementSibling;
-          passwordField.type = 'password'; // Change type back to 'password' to hide it
-        });
-      });
-    </script>
-  </body>
+  </div>
+</body>
 </html>
