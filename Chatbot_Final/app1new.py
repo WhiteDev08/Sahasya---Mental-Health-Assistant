@@ -1,5 +1,6 @@
 import nltk
 # Ensure 'punkt' tokenizer is downloaded
+nltk.download('punkt_tab')
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
