@@ -1,3 +1,10 @@
+import nltk
+# Ensure 'punkt' tokenizer is downloaded
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    print("Downloading NLTK punkt tokenizer...")
+    nltk.download('punkt')
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
@@ -8,8 +15,6 @@ import numpy as np
 import nltk
 from keras.models import load_model
 from nltk.stem import WordNetLemmatizer
-import nltk
-nltk.download('punkt')
 #Disable GPU
 import tensorflow as tf
 tf.config.set_visible_devices([], 'GPU')
