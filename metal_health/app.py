@@ -56,9 +56,15 @@ def login():
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    user_input = request.json.get('message')
-    bot_response = chatbot_response(user_input)
-    return jsonify({"response": bot_response})
+    try:
+        user_input = request.json.get('message', '')
+        print(f"Received user input: {user_input}")  # Add logging for debugging
+        bot_response = chatbot_response(user_input)
+        print(f"Bot response: {bot_response}")  # Add logging for debugging
+        return jsonify({"response": bot_response})
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/login', methods=['POST'])
 def login_submit():
